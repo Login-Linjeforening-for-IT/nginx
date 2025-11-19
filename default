@@ -6,22 +6,22 @@ server {
     return 301 https://$host$request_uri;
 }
 
-server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
-    server_name login.no www.login.no;
-    ssl_certificate /etc/letsencrypt/live/login.no/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/login.no/privkey.pem;
+# server {
+#     listen 443 ssl;
+#     listen [::]:443 ssl;
+#     server_name login.no www.login.no;
+#     ssl_certificate /etc/letsencrypt/live/login.no/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/login.no/privkey.pem;
 
-    include snippets/errors.conf;
-#   resolver 10.177.195.1 valid=10s ipv6=off;
+#     include snippets/errors.conf;
+#     resolver 10.177.195.1 valid=10s ipv6=off;
 
-    location / {
+#     location / {
 #       access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-        proxy_pass http://localhost:3000;
-        include snippets/proxy-headers.conf;
-    }
-}
+#       proxy_pass http://localhost:3000;
+#       include snippets/proxy-headers.conf;
+#     }
+# }
 
 server {
     listen 443 ssl;

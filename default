@@ -2,6 +2,14 @@ server {
     listen 80;
     listen [::]:80;
 
+    server_name login.no *.login.no;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name herman.login.no;
     include snippets/errors.conf;
 
@@ -12,8 +20,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name queenbee.login.no;
     include snippets/errors.conf;
@@ -25,8 +33,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name api.tekkom-bot.login.no;
     include snippets/errors.conf;
@@ -38,8 +46,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name api.app.login.no;
     include snippets/errors.conf;
@@ -51,8 +59,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name beekeeper.login.no;
     include snippets/errors.conf;
@@ -64,8 +72,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name api.beekeeper.login.no;
     include snippets/errors.conf;
@@ -77,8 +85,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name exam.login.no;
     include snippets/errors.conf;
@@ -90,8 +98,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name api.exam.login.no;
     include snippets/errors.conf;
@@ -103,8 +111,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name workerbee.login.no;
     include snippets/errors.conf;
@@ -116,8 +124,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name beeswarm.login.no;
     include snippets/errors.conf;
@@ -129,8 +137,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name api.beeswarm.login.no;
     include snippets/errors.conf;
@@ -142,8 +150,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name gatherbee.login.no;
     include snippets/errors.conf;
@@ -155,8 +163,8 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443;
+    listen [::]:443;
 
     server_name login.no *.login.no;
     include snippets/errors.conf;

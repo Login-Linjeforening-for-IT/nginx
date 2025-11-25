@@ -2,6 +2,19 @@ server {
     listen 80;
     listen [::]:80;
 
+    server_name herman.login.no;
+    include snippets/errors.conf;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        include snippets/proxy-headers.conf;
+    }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
     server_name queenbee.login.no;
     include snippets/errors.conf;
 

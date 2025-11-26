@@ -10,19 +10,6 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name daoud.login.no;
-    include snippets/errors.conf;
-
-    location / {
-        proxy_pass http://localhost:8050;
-        include snippets/proxy-headers.conf;
-    }
-}
-
-server {
-    listen 443;
-    listen [::]:443;
-
     server_name queenbee.login.no;
     include snippets/errors.conf;
 

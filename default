@@ -10,6 +10,19 @@ server {
     listen 443;
     listen [::]:443;
 
+    server_name internal.login.no;
+    include snippets/errors.conf;
+
+    location / {
+        proxy_pass http://localhost:8000;
+        include snippets/proxy-headers.conf;
+    }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name queenbee.login.no;
     include snippets/errors.conf;
 

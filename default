@@ -36,7 +36,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name api.app.login.no;
+    server_name app.login.no;
     include snippets/errors.conf;
 
     location / {

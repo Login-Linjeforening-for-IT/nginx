@@ -75,7 +75,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name exam.login.no;
+    server_name exam.login.no studentbee.login.no;
     include snippets/errors.conf;
 
     location / {
@@ -88,7 +88,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name api.exam.login.no;
+    server_name api.exam.login.no studentbee-api.login.no;
     include snippets/errors.conf;
 
     location / {

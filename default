@@ -12,9 +12,10 @@ server {
 
     server_name queenbee.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8000;
         include snippets/proxy-headers.conf;
     }
@@ -26,9 +27,10 @@ server {
 
     server_name internal.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8001;
         include snippets/proxy-headers.conf;
     }
@@ -40,9 +42,10 @@ server {
 
     server_name api.beekeeper.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8002;
         include snippets/proxy-headers.conf;
     }
@@ -54,9 +57,10 @@ server {
 
     server_name api.tekkom-bot.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8080;
         include snippets/proxy-headers.conf;
     }
@@ -68,9 +72,10 @@ server {
 
     server_name app.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8100;
         include snippets/proxy-headers.conf;
     }
@@ -82,9 +87,10 @@ server {
 
     server_name exam.login.no studentbee.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8400;
         include snippets/proxy-headers.conf;
     }
@@ -96,9 +102,10 @@ server {
 
     server_name api.exam.login.no studentbee-api.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8401;
         include snippets/proxy-headers.conf;
     }
@@ -110,9 +117,10 @@ server {
 
     server_name workerbee.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8500;
         include snippets/proxy-headers.conf;
     }
@@ -124,9 +132,10 @@ server {
 
     server_name beeswarm.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8600;
         include snippets/proxy-headers.conf;
     }
@@ -138,9 +147,10 @@ server {
 
     server_name api.beeswarm.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8601;
         include snippets/proxy-headers.conf;
     }
@@ -152,9 +162,10 @@ server {
 
     server_name gatherbee.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8700;
         include snippets/proxy-headers.conf;
     }
@@ -166,9 +177,10 @@ server {
 
     server_name login.no *.login.no;
     include snippets/errors.conf;
+    
+    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:3000;
         include snippets/proxy-headers.conf;
     }

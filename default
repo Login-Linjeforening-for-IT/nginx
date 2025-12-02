@@ -14,7 +14,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8000;
         include snippets/proxy-headers.conf;
     }
@@ -28,7 +28,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8001;
         include snippets/proxy-headers.conf;
     }
@@ -42,7 +42,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8002;
         include snippets/proxy-headers.conf;
     }
@@ -56,7 +56,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8080;
         include snippets/proxy-headers.conf;
     }
@@ -70,7 +70,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8100;
         include snippets/proxy-headers.conf;
     }
@@ -84,7 +84,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8400;
         include snippets/proxy-headers.conf;
     }
@@ -98,7 +98,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8401;
         include snippets/proxy-headers.conf;
     }
@@ -112,7 +112,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8500;
         include snippets/proxy-headers.conf;
     }
@@ -126,7 +126,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8600;
         include snippets/proxy-headers.conf;
     }
@@ -140,7 +140,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8601;
         include snippets/proxy-headers.conf;
     }
@@ -154,7 +154,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:8700;
         include snippets/proxy-headers.conf;
     }
@@ -168,7 +168,7 @@ server {
     include snippets/errors.conf;
 
     location / {
-        log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+        access_by_lua_file /etc/nginx/lua/traffic_logger.lua;
         proxy_pass http://localhost:3000;
         include snippets/proxy-headers.conf;
     }

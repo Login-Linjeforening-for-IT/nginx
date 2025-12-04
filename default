@@ -55,7 +55,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name api.tekkom-bot.login.no;
+    server_name api.tekkom-bot.login.no bot.login.no;
     include snippets/errors.conf;
     
     # log_by_lua_file /etc/nginx/lua/traffic_logger.lua;

@@ -60,6 +60,17 @@ server {
     
     # log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
+    error_page 403 /403.html;
+
+    location = /403.html {
+        root /etc/nginx/sites-available/internal/fallback;
+        internal;
+    }
+
+    if ($request_uri ~* "dizambee") {
+        return 403;
+    }
+
     location / {
         proxy_pass http://localhost:8080;
         include snippets/proxy-headers.conf;

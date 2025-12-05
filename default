@@ -40,7 +40,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name api.beekeeper.login.no;
+    server_name beekeeper.login.no;
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;

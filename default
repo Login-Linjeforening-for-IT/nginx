@@ -107,6 +107,11 @@ server {
 
     server_name api.exam.login.no studentbee-api.login.no;
     include snippets/errors.conf;
+
+    location ~* /api/user/(time|score) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /403.html =403;
+    }
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 

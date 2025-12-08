@@ -112,7 +112,7 @@ server {
         root /etc/nginx/sites-available/fallback;
         try_files /403.html =403;
     }
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {

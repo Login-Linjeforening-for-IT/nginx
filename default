@@ -165,21 +165,6 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name gatherbee.login.no;
-    include snippets/errors.conf;
-    
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-
-    location / {
-        proxy_pass http://localhost:8700;
-        include snippets/proxy-headers.conf;
-    }
-}
-
-server {
-    listen 443;
-    listen [::]:443;
-
     server_name login.no *.login.no;
     include snippets/errors.conf;
     

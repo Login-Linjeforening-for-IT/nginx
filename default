@@ -16,6 +16,12 @@ server {
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
+    }
+
     location / {
         proxy_pass http://localhost:8000;
         include snippets/proxy-headers.conf;
@@ -25,6 +31,12 @@ server {
 server {
     listen 443;
     listen [::]:443;
+
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
+    }
 
     server_name exam.login.no;
     return 301 https://studentbee.login.no$request_uri;
@@ -38,6 +50,12 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
+    }
 
     location / {
         proxy_pass http://localhost:8001;
@@ -53,6 +71,12 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
+    }
 
     location / {
         proxy_pass http://localhost:8002;
@@ -104,6 +128,12 @@ server {
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
+    }
+
     location / {
         proxy_pass http://localhost:8400;
         include snippets/proxy-headers.conf;
@@ -120,6 +150,12 @@ server {
     location ~* /api/user/(time|score) {
         root /etc/nginx/sites-available/fallback;
         try_files /403.html =403;
+    }
+
+    if ($on_ntnu_vpn = 0) {
+        root /etc/nginx/sites-available/fallback;
+        try_files /vpn.html =403;
+        break;
     }
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
@@ -188,4 +224,26 @@ server {
         proxy_pass http://localhost:3000;
         include snippets/proxy-headers.conf;
     }
+}
+
+geo $is_ntnu_vpn {
+    default 0;
+
+    10.0.0.0/8 1;
+    192.168.0.0/16 1;
+    172.16.0.0/12 1;
+    129.240.0.0/16 1;
+    129.241.0.0/16 1;
+    129.242.0.0/16 1;
+}
+
+geo $is_ntnu_vpn6 {
+    default 0;
+
+    2001:700::/38 1;
+}
+
+map "$is_ntnu_vpn$is_ntnu_vpn6" $on_ntnu_vpn {
+    default 0;
+    ~1 1;
 }

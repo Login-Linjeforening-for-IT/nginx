@@ -23,6 +23,14 @@ server {
 
 server {
     listen 443;
+    listen [::]:443 ssl;
+
+    server_name exam.login.no;
+    return 301 https://studentbee.login.no$request_uri;
+}
+
+server {
+    listen 443;
     listen [::]:443;
 
     server_name internal.login.no;
@@ -90,7 +98,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name exam.login.no studentbee.login.no;
+    server_name studentbee.login.no;
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
@@ -105,7 +113,7 @@ server {
     listen 443;
     listen [::]:443;
 
-    server_name api.exam.login.no studentbee-api.login.no;
+    server_name studentbee-api.login.no;
     include snippets/errors.conf;
 
     location ~* /api/user/(time|score) {

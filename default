@@ -11,7 +11,6 @@ server {
     listen [::]:443;
 
     server_name queenbee.login.no;
-    include snippets/vpn-allowlist.conf;
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;

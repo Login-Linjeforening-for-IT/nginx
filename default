@@ -30,7 +30,7 @@ geo $on_ntnu_vpn $abc {
     2001:700:300::/44 1;
 }
 
-map $on_ntnu_vpn $vpn_gate {
+map $on_ntnu_vpn $gg {
     1      "";
     0      "/__vpn_required";
 }

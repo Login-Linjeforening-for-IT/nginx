@@ -3,7 +3,7 @@ map $http_x_forwarded_for $client_ip {
     ""      $remote_addr;
 }
 
-geo $client_ip $abc {
+geo $client_ip $vpn_gate {
     default 0;
 
     # IPv4 private ranges
@@ -54,7 +54,7 @@ server {
 
     location /debug {
         default_type text/plain;
-        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\ngg: $gg\nclient_ip: $client_ip\nvpn_gate: $abc";
+        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\ngg: $gg\nclient_ip: $client_ip\nvpn_gate: $vpn_gate";
     }
 
     location / {

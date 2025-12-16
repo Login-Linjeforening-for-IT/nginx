@@ -30,7 +30,7 @@ geo $client_ip $vpn_gate {
     2001:700:300::/44 1;
 }
 
-map $on_ntnu_vpn $gg {
+map $vpn_gate $gg {
     1      "";
     0      "/__vpn_required";
 }

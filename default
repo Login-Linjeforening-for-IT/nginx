@@ -54,7 +54,7 @@ server {
 
     location /debug_ip {
         default_type text/plain;
-        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\nclient_ip: $client_ip\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\n";
+        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\nreal_client_ip: $real_client_ip\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\n";
     }
 
     location / {

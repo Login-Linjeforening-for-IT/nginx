@@ -3,7 +3,7 @@ map $http_x_forwarded_for $client_ip {
     ""      $remote_addr;
 }
 
-geo $client_ip $vpn_gate {
+geo $client_ip $on_vpn {
     default 0;
 
     # IPv4 private ranges
@@ -28,11 +28,6 @@ geo $client_ip $vpn_gate {
     2001:700:1200::/48 1;
     2001:700:1d00::/48 1;
     2001:700:300::/44 1;
-}
-
-map $vpn_gate $on_vpn {
-    1      "";
-    0      "/__vpn_required";
 }
 
 server {

@@ -54,7 +54,7 @@ server {
 
     location /debug {
         default_type text/plain;
-        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\nvpn_gate: $vpn_gate\non_ntnu_vpn: $on_ntnu_vpn\ngg: $gg";
+        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\nvpn_gate: $vpn_gate\ngg: $gg";
     }
 
     location / {

@@ -30,7 +30,7 @@ geo $client_ip $vpn_gate {
     2001:700:300::/44 1;
 }
 
-map $vpn_gate $abc {
+map $vpn_gate $on_vpn {
     1      "";
     0      "/__vpn_required";
 }
@@ -54,11 +54,11 @@ server {
 
     location /debug {
         default_type text/plain;
-        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\nvpn_gate: $vpn_gate\nabc: $abc";
+        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\nvpn_gate: $vpn_gate\non_vpn: $on_vpn";
     }
 
     location / {
-        if ($on_ntnu_vpn = 0) {
+        if ($on_vpn = 0) {
             return 302 /__vpn_required;
         }
 

@@ -51,6 +51,7 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    set $on_ntnu_vpn 0;
 
     location /debug_ip {
         default_type text/plain;
@@ -83,6 +84,7 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    set $on_ntnu_vpn 0;
 
     location / {
         if ($on_ntnu_vpn = 0) {
@@ -102,6 +104,7 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    set $on_ntnu_vpn 0;
 
     location / {
         if ($on_ntnu_vpn = 0) {
@@ -121,6 +124,7 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    set $on_ntnu_vpn 0;
 
     location ~* dizambee {
         if ($on_ntnu_vpn = 0) {
@@ -160,6 +164,7 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    set $on_ntnu_vpn 0;
 
     location / {
         if ($on_ntnu_vpn = 0) {
@@ -177,6 +182,7 @@ server {
 
     server_name studentbee-api.login.no;
     include snippets/errors.conf;
+    set $on_ntnu_vpn 0;
 
     location ~* /api/user/(time|score) {
         if ($on_ntnu_vpn = 0) {

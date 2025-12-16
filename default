@@ -1,39 +1,39 @@
-# map $http_x_forwarded_for $client_ip {
-#     default $remote_addr;
-#     "~."    $http_x_forwarded_for;
-# }
+map $http_x_forwarded_for $client_ip {
+    default $remote_addr;
+    "~."    $http_x_forwarded_for;
+}
 
-# geo $on_ntnu_vpn $client_ip {
-#     default 0;
+geo $on_ntnu_vpn $client_ip {
+    default 0;
 
-#     # IPv4 private ranges
-#     10.0.0.0/8       1;
-#     192.168.0.0/16   1;
-#     172.16.0.0/12    1;
+    # IPv4 private ranges
+    10.0.0.0/8       1;
+    192.168.0.0/16   1;
+    172.16.0.0/12    1;
 
-#     # NTNU and related allowlist ranges
-#     129.240.0.0/16   1;
-#     129.241.0.0/16   1;
-#     129.242.0.0/16   1;
-#     78.91.0.0/18     1;
-#     78.91.64.0/20    1;
-#     78.91.80.0/22    1;
-#     128.39.0.0/16    1;
-#     158.38.0.0/16    1;
-#     10.133.0.0/16    1;
+    # NTNU and related allowlist ranges
+    129.240.0.0/16   1;
+    129.241.0.0/16   1;
+    129.242.0.0/16   1;
+    78.91.0.0/18     1;
+    78.91.64.0/20    1;
+    78.91.80.0/22    1;
+    128.39.0.0/16    1;
+    158.38.0.0/16    1;
+    10.133.0.0/16    1;
 
-#     # IPv6 ranges
-#     2001:700:300::/46 1;
-#     2001:700:b00::/48 1;
-#     2001:700:1200::/48 1;
-#     2001:700:1d00::/48 1;
-#     2001:700:300::/44 1;
-# }
+    # IPv6 ranges
+    2001:700:300::/46 1;
+    2001:700:b00::/48 1;
+    2001:700:1200::/48 1;
+    2001:700:1d00::/48 1;
+    2001:700:300::/44 1;
+}
 
-# map $on_ntnu_vpn $vpn_gate {
-#     1      "";
-#     0      "/__vpn_required";
-# }
+map $on_ntnu_vpn $vpn_gate {
+    1      "";
+    0      "/__vpn_required";
+}
 
 server {
     listen 80;
@@ -51,9 +51,6 @@ server {
     include snippets/errors.conf;
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-    set $on_ntnu_vpn 0;
-    set $vpn_gate 0;
-    set $client_ip 0;
 
     location /debug {
         default_type text/plain;

@@ -53,6 +53,7 @@ server {
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
     set $on_ntnu_vpn 0;
     set $vpn_gate 0;
+    set $client_ip 0;
 
     location /debug {
         default_type text/plain;

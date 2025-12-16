@@ -49,7 +49,7 @@ server {
 
     location / {
         if ($vpn = 1) {
-            return 407 /;
+            return 407;
         }
 
         proxy_pass http://localhost:8000;

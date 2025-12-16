@@ -49,12 +49,12 @@ server {
 
     server_name queenbee.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location /debug {
         default_type text/plain;
-        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\nclient_ip: $client_ip\nvpn_gate: $abc";
+        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\ngg: $gg\nclient_ip: $client_ip\nvpn_gate: $abc";
     }
 
     location / {
@@ -81,7 +81,7 @@ server {
 
     server_name internal.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
     set $on_ntnu_vpn 0;
 
@@ -101,7 +101,7 @@ server {
 
     server_name beekeeper.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
     set $on_ntnu_vpn 0;
 
@@ -121,7 +121,7 @@ server {
 
     server_name bot.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
     set $on_ntnu_vpn 0;
 
@@ -146,7 +146,7 @@ server {
 
     server_name app.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
@@ -161,7 +161,7 @@ server {
 
     server_name studentbee.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
     set $on_ntnu_vpn 0;
 
@@ -210,7 +210,7 @@ server {
 
     server_name workerbee.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
@@ -225,7 +225,7 @@ server {
 
     server_name beeswarm.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
@@ -240,7 +240,7 @@ server {
 
     server_name api.beeswarm.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
@@ -255,7 +255,7 @@ server {
 
     server_name login.no *.login.no;
     include snippets/errors.conf;
-    
+
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {

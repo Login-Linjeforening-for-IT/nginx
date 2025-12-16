@@ -54,8 +54,7 @@ server {
 
     location / {
         if ($on_vpn = 0) {
-            root /etc/nginx/sites-available/fallback;
-            try_files /403.html =403;
+            return 403;
         }
 
         proxy_pass http://localhost:8000;

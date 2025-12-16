@@ -49,7 +49,7 @@ server {
 
     location /debug {
         default_type text/plain;
-        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\nvpn_gate: $vpn_gate\non_vpn: $on_vpn";
+        return 200 "http_x_forwarded_for: $http_x_forwarded_for\nclient_ip: $client_ip\non_vpn: $on_vpn";
     }
 
     location / {

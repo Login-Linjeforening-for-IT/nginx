@@ -1,4 +1,9 @@
-geo $on_ntnu_vpn {
+map $http_x_forwarded_for $real_client_ip {
+    ~^([^,]+) $1;
+    default $remote_addr;
+}
+
+geo $real_client_ip $on_ntnu_vpn {
     default 0;
 
     # IPv4 private ranges

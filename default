@@ -1,9 +1,9 @@
-map $http_x_forwarded_for $real_client_ip {
-    ~^([^,]+) $1;
+map $http_x_forwarded_for $client_ip {
     default $remote_addr;
+    "~."    $http_x_forwarded_for;
 }
 
-geo $real_client_ip $on_ntnu_vpn {
+geo $on_ntnu_vpn $client_ip {
     default 0;
 
     # IPv4 private ranges
@@ -57,13 +57,11 @@ server {
         return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\nreal_client_ip: $real_client_ip\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\n";
     }
 
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
-    }
-
     location / {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         proxy_pass http://localhost:8000;
         include snippets/proxy-headers.conf;
     }
@@ -72,12 +70,6 @@ server {
 server {
     listen 443;
     listen [::]:443;
-
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
-    }
 
     server_name exam.login.no;
     return 301 https://studentbee.login.no$request_uri;
@@ -92,13 +84,11 @@ server {
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
-    }
-
     location / {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         proxy_pass http://localhost:8001;
         include snippets/proxy-headers.conf;
     }
@@ -113,13 +103,11 @@ server {
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
-    }
-
     location / {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         proxy_pass http://localhost:8002;
         include snippets/proxy-headers.conf;
     }
@@ -135,6 +123,10 @@ server {
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location ~* dizambee {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         root /etc/nginx/sites-available/fallback;
         try_files /403.html =403;
     }
@@ -169,13 +161,11 @@ server {
     
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
-    }
-
     location / {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         proxy_pass http://localhost:8400;
         include snippets/proxy-headers.conf;
     }
@@ -189,19 +179,21 @@ server {
     include snippets/errors.conf;
 
     location ~* /api/user/(time|score) {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         root /etc/nginx/sites-available/fallback;
         try_files /403.html =403;
-    }
-
-    location = /__vpn_required {
-        internal;
-        root /etc/nginx/sites-available/fallback;
-        try_files /vpn.html =403;
     }
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
+        if ($on_ntnu_vpn = 0) {
+            return 302 /__vpn_required;
+        }
+
         proxy_pass http://localhost:8401;
         include snippets/proxy-headers.conf;
     }

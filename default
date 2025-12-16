@@ -48,7 +48,7 @@ server {
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        if ($on_vpn = 0) {
+        if ($on_vpn = 1) {
             return 407 /;
         }
 

@@ -1,7 +1,7 @@
-# map $http_x_forwarded_for $client_ip {
-#     default $remote_addr;
-#     "~."    $http_x_forwarded_for;
-# }
+map $http_x_forwarded_for $client_ip {
+    default $remote_addr;
+    "~."    $http_x_forwarded_for;
+}
 
 # geo $on_ntnu_vpn $client_ip {
 #     default 0;
@@ -56,7 +56,7 @@ server {
 
     location /debug_ip {
         default_type text/plain;
-        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\n";
+        return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\nclient_ip: $client_ip";
     }
 
     location / {

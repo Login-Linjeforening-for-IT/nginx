@@ -3,8 +3,6 @@
 #     "~."    $http_x_forwarded_for;
 # }
 
-set $on_ntnu_vpn 0;
-
 # geo $on_ntnu_vpn $client_ip {
 #     default 0;
 

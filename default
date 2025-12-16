@@ -54,7 +54,7 @@ server {
 
     location / {
         if ($on_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         proxy_pass http://localhost:8000;
@@ -82,7 +82,7 @@ server {
 
     location / {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         proxy_pass http://localhost:8001;
@@ -102,7 +102,7 @@ server {
 
     location / {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         proxy_pass http://localhost:8002;
@@ -122,7 +122,7 @@ server {
 
     location ~* dizambee {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         root /etc/nginx/sites-available/fallback;
@@ -162,7 +162,7 @@ server {
 
     location / {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         proxy_pass http://localhost:8400;
@@ -180,7 +180,7 @@ server {
 
     location ~* /api/user/(time|score) {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         root /etc/nginx/sites-available/fallback;
@@ -191,7 +191,7 @@ server {
 
     location / {
         if ($on_ntnu_vpn = 0) {
-            return 302 /__vpn_required;
+            return 302 /;
         }
 
         proxy_pass http://localhost:8401;

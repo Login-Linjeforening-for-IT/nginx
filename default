@@ -3,7 +3,7 @@ map $http_x_forwarded_for $client_ip {
     ""      $remote_addr;
 }
 
-geo $client_ip $on_vpn {
+geo $client_ip $vpn {
     default 0;
 
     # IPv4 private ranges
@@ -48,7 +48,7 @@ server {
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        if ($on_vpn = 1) {
+        if ($vpn = 1) {
             return 407 /;
         }
 
@@ -73,10 +73,9 @@ server {
     include snippets/errors.conf;
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-    set $on_ntnu_vpn 0;
 
     location / {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 
@@ -93,10 +92,9 @@ server {
     include snippets/errors.conf;
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-    set $on_ntnu_vpn 0;
 
     location / {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 
@@ -113,10 +111,9 @@ server {
     include snippets/errors.conf;
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-    set $on_ntnu_vpn 0;
 
     location ~* dizambee {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 
@@ -153,10 +150,9 @@ server {
     include snippets/errors.conf;
 
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
-    set $on_ntnu_vpn 0;
 
     location / {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 
@@ -171,10 +167,9 @@ server {
 
     server_name studentbee-api.login.no;
     include snippets/errors.conf;
-    set $on_ntnu_vpn 0;
 
     location ~* /api/user/(time|score) {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 
@@ -185,7 +180,7 @@ server {
     log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
 
     location / {
-        if ($on_ntnu_vpn = 0) {
+        if ($vpn = 0) {
             return 302 /;
         }
 

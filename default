@@ -54,7 +54,7 @@ server {
     set $on_ntnu_vpn 0;
     set $vpn_gate 0;
 
-    location /debug_ip {
+    location /debug {
         default_type text/plain;
         return 200 "remote_addr: $remote_addr\nX-Forwarded-For: $http_x_forwarded_for\non_ntnu_vpn: $on_ntnu_vpn\nvpn_gate: $vpn_gate\nclient_ip: $client_ip";
     }

@@ -1,6 +1,6 @@
 map $http_x_forwarded_for $client_ip {
-    default $remote_addr;
-    "~."    $http_x_forwarded_for;
+    default $http_x_forwarded_for;
+    ""      $remote_addr;
 }
 
 geo $on_ntnu_vpn $client_ip {

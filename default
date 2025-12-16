@@ -3,7 +3,7 @@ map $http_x_forwarded_for $client_ip {
     ""      $remote_addr;
 }
 
-geo $on_ntnu_vpn $http_x_forwarded_for {
+geo $on_ntnu_vpn $client_ip {
     default 0;
 
     # IPv4 private ranges

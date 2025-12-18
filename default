@@ -45,7 +45,7 @@ server {
     server_name queenbee.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         if ($vpn = 0) {
@@ -72,7 +72,7 @@ server {
     server_name internal.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         if ($vpn = 0) {
@@ -91,7 +91,7 @@ server {
     server_name beekeeper.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         if ($vpn = 0) {
@@ -110,7 +110,7 @@ server {
     server_name bot.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location ~* dizambee {
         if ($vpn = 0) {
@@ -134,7 +134,7 @@ server {
     server_name app.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         proxy_pass http://localhost:8100;
@@ -149,7 +149,7 @@ server {
     server_name studentbee.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         if ($vpn = 0) {
@@ -177,7 +177,7 @@ server {
         try_files /403.html =403;
     }
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         if ($vpn = 0) {
@@ -196,7 +196,7 @@ server {
     server_name workerbee.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         proxy_pass http://localhost:8500;
@@ -211,7 +211,7 @@ server {
     server_name beeswarm.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         proxy_pass http://localhost:8600;
@@ -226,7 +226,7 @@ server {
     server_name api.beeswarm.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         proxy_pass http://localhost:8601;
@@ -241,7 +241,7 @@ server {
     server_name login.no *.login.no;
     include snippets/errors.conf;
 
-    log_by_lua_file /etc/nginx/lua/traffic_logger.lua;
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
     location / {
         proxy_pass http://localhost:3000;

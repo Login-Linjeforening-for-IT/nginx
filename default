@@ -236,3 +236,13 @@ server {
         include snippets/proxy-headers.conf;
     }
 }
+
+# Redirects
+
+server {
+    listen 443;
+    listen [::]:443;
+
+    server_name status.login.no;
+    return 301 https://login.no/status;
+}

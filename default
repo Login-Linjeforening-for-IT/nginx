@@ -237,15 +237,6 @@ server {
     }
 }
 
-server {
-    listen 443;
-    listen [::]:443;
-
-    server_name *.login.no;
-    return 301 https://login.no;
-
-}
-
 # Redirects
 
 server {
@@ -254,4 +245,12 @@ server {
 
     server_name status.login.no;
     return 301 https://login.no/status;
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
+    server_name *.login.no;
+    return 301 https://login.no;
 }

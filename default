@@ -76,6 +76,21 @@ server {
     listen 443;
     listen [::]:443;
 
+    server_name forgejo.login.no;
+    include snippets/errors.conf;
+
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
+
+    location / {
+        proxy_pass http://localhost:8200;
+        include snippets/proxy-headers.conf;
+    }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name exam.login.no;
     return 301 https://studentbee.login.no$request_uri;
 }

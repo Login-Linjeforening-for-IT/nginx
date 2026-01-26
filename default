@@ -282,7 +282,7 @@ server {
     listen [::]:443;
 
     server_name daoud.login.no;
-    return 301 https://queenbee..login.no/;
+    return 301 https://queenbee.login.no/;
 }
 
 server {

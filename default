@@ -281,6 +281,14 @@ server {
     listen 443;
     listen [::]:443;
 
+    server_name daoud.login.no;
+    return 301 https://queenbee..login.no/;
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name *.login.no;
     return 301 https://login.no;
 }

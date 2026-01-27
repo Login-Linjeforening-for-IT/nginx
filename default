@@ -289,6 +289,14 @@ server {
     listen 443;
     listen [::]:443;
 
+    server_name logout.no;
+    return 301 https://login.no/pwned;
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name *.login.no;
     return 301 https://login.no;
 }

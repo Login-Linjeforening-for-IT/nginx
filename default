@@ -261,6 +261,7 @@ server {
 
     location / {
         proxy_pass https://cdn.login.no/img/buskflytter.gif;
+        proxy_ssl_server_name on;
         include snippets/proxy-headers.conf;
     }
 }

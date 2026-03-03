@@ -76,6 +76,25 @@ server {
     listen 443;
     listen [::]:443;
 
+    server_name api.forms.login.no;
+    include snippets/errors.conf;
+
+    log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
+
+    location ~ ^/api/forms/[^/]+/live$ {
+        proxy_pass http://localhost:8701;
+        include snippets/proxy-headers.conf;
+    }
+
+    location / {
+        return 404;
+    }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+
     server_name forgejo.login.no;
     include snippets/errors.conf;
 

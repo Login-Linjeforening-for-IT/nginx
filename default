@@ -81,13 +81,9 @@ server {
 
     log_by_lua_file /usr/local/openresty/nginx/lua/traffic_logger.lua;
 
-    location ~ ^/api/forms/[^/]+/live$ {
+    location / {
         proxy_pass http://localhost:8701;
         include snippets/proxy-headers.conf;
-    }
-
-    location / {
-        return 404;
     }
 }
 
